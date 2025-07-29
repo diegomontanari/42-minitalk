@@ -2,8 +2,7 @@ SHELL		=	/bin/bash
 
 NAME		= client
 NAMESV		= server
-NAMEBC		= client_bonus
-NAMEBS		= server_bonus
+
 LIBFT		= libft
 INC		= INCLUDES
 HEADER		= -I INCLUDES
@@ -28,20 +27,13 @@ WHITE		=	\033[0;97m
 
 SRCCL_FILES	=	client
 SRCSV_FILES	=	server
-SRCBC_FILES	=	client_bonus
-SRCBS_FILES	=	server_bonus
+
 
 SRCCL 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCL_FILES)))
 OBJCL 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCCL_FILES)))
 
 SRCSV 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCSV_FILES)))
 OBJSV 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCSV_FILES)))
-
-SRCBC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCBC_FILES)))
-OBJBC 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCBC_FILES)))
-
-SRCBS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCBS_FILES)))
-OBJBS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRCBS_FILES)))
 
 
 OBJF		=	.cache_exists
@@ -73,25 +65,6 @@ $(OBJF):
 			@mkdir -p $(OBJ_DIR)
 			@touch $(OBJF)
 
-bonus:
-			@make -C $(LIBFT)
-			@cp $(LIBFT)/libft.a .
-			@$(ECHO) -n "$(YELLOW)[Dependencies]:\t$(DEF_COLOR)"
-			@$(ECHO) -n "$(RED)[$(DEF_COLOR)"
-			@make allbonus
-
-allbonus:		$(NAMEBC) $(NAMEBS)
-
-$(NAMEBC):	$(OBJBC) $(OBJF)
-			@$(CC) $(FLAGS) $(OBJBC) $(HEADER) libft.a -o $(NAMEBC)
-
-$(NAMEBS):	$(OBJBS) $(OBJF)
-			@$(ECHO) -n "$(RED)]$(DEF_COLOR)"
-			@$(ECHO) -n "$(GREEN) => 100%$(DEF_COLOR)\n"
-			@$(ECHO) -n "$(YELLOW)[minitalk_bonus]:\t$(DEF_COLOR)"
-			@$(CC) $(FLAGS) $(OBJBS) $(HEADER) libft.a -o $(NAMEBS)
-			@$(ECHO) "$(GREEN) => Success!$(DEF_COLOR)"
-
 clean:
 			@$(RM) -r $(OBJ_DIR)
 			@$(RM) $(OBJF)
@@ -99,7 +72,7 @@ clean:
 			@$(ECHO) -n "$(BLUE)[minitalk]:\tobject files$(DEF_COLOR)$(GREEN)  => Cleaned!$(DEF_COLOR)\n"
 
 fclean:		clean
-			@$(RM) $(NAME) $(NAMESV) $(NAMEBC) $(NAMEBS)
+			@$(RM) $(NAME) $(NAMESV)
 			@$(RM) $(LIBFT)/libft.a
 			@$(RM) libft.a
 			@find . -name ".DS_Store" -delete
@@ -114,4 +87,4 @@ norm:
 			@clear
 			@norminette $(SRC) $(INC) $(LIBFT) | grep -v Norme -B1 || true
 
-.PHONY:		start all clean fclean re bonus norm
+.PHONY:		start all clean fclean re norm

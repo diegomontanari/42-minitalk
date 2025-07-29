@@ -12,6 +12,13 @@
 
 #include "ft_printf.h"
 
+// Stampa un carattere e aggiorna il contatore
+void	ft_print_char(const char c, int *count)
+{
+	write(1, &c, 1);
+	(*count)++;
+}
+
 void	ft_print_low_hex(unsigned int nbr_hex, int *count)
 {
 	unsigned long	n;

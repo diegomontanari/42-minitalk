@@ -1,0 +1,21 @@
+# Oggetti compilati
+*.o
+obj/
+
+# Libreria statica
+libft.a
+
+# Eseguibili
+client
+server
+client_bonus
+server_bonus
+
+# File temporanei
+.cache_exists
+.DS_Store
+
+# File di backup
+*~
+*.swp
+*.tmp
