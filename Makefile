@@ -25,8 +25,8 @@ MAGENTA		=	\033[0;95m
 CYAN		=	\033[0;96m
 WHITE		=	\033[0;97m
 
-SRCCL_FILES	=	client
-SRCSV_FILES	=	server
+SRCCL_FILES	=	client ack_utils
+SRCSV_FILES	= server ack_utils
 
 
 SRCCL 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRCCL_FILES)))
