@@ -26,7 +26,12 @@ void ft_handler(int signal, siginfo_t *info, void *context)
 
 /*
  * Entry point for the server program.
+ (void)argv; is to use argv without warning, since it's not used.
+ just argv; is not enough to remove the warning, since it's not an action.
  * Prints its PID and waits for messages from clients.
+ while (1) is an infinite loop.
+ pause() is a system call that puts the process to sleep until a signal is received.
+ install_server_signal_handlers(ft_handler) installs the signal handlers for SIGUSR1 and SIGUSR2.
  * Sets up signal handlers for SIGUSR1 and SIGUSR2 to receive bits.
  * Prints an error message if arguments are incorrect.
  */

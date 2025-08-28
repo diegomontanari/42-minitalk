@@ -2,7 +2,7 @@
 #include "ack_utils.h"
 
 /*
-One char s made of 8 bits.
+One char is made of 8 bits.
 ---
 if -> Se il bit alla posizione 'bit' è 1 manda (kill) SIGUSR1 al processo con PID 'pid'
 else -> manda (kill) SIGUSR2 al processo con PID 'pid'
@@ -43,7 +43,7 @@ int main(int argc, char **argv)
     int pid;
     int i;
 
-    install_ack_handler(); // <--- Mettila qui!
+    install_ack_handler();
 
     i = 0;
     if (argc == 3)
