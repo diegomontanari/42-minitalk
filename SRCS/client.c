@@ -7,12 +7,13 @@ One char is made of 8 bits.
 if -> Se il bit alla posizione 'bit' è 1 manda (kill) SIGUSR1 al processo con PID 'pid'
 else -> manda (kill) SIGUSR2 al processo con PID 'pid'
 ---
-Waits 100 microseconds between each signal to ensure correct delivery.
+Waits 100 microseconds between each signal to ensure correct delivery (if i ued sleep() but I don't since I'm using an ack system, so waiting is useless).
 -> int usleep(useconds_t microseconds) -> definita in <unistd.h>
 serve a introdurre ritardi controllati in programmi che gestiscono segnali, thread, 
 I/O o comunicazione fra processi per lasciare il tempo al sistema 
 operativo di processare altri eventi.
- */
+-> The choice of 0x01 (1 in exadecimal) is just a matter of readability and convention.
+*/
 
 void	ft_send_bits(int pid, char i)
 {
